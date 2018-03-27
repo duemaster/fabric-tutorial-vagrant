@@ -70,7 +70,7 @@ cd /usr/local/bin/ ; ln -s node nodejs
 npm install -g yo generator-fountain-webapp http-server@0.10.0 typings bower @angular/cli generator-hyperledger-composer composer-rest-server
 
 #composer playground
-su ubuntu -c "cd ; git clone https://github.com/suenchunhui/fabric-tutorial-vagrant ; ln -s fabric-tutorial-vagrant/composer-playground ."
+su ubuntu -c "cd ; git clone https://github.com/duemaster/fabric-tutorial-vagrant ; ln -s fabric-tutorial-vagrant/composer-playground ."
 su ubuntu -c "cd ; cd composer-playground ; chmod a+x playground.sh ; chmod a+x scripts/*.sh ; cd fabric-composer-tools ; docker build -t fabric-composer-tools ."
 
 #cloud9 IDE
@@ -100,4 +100,10 @@ Vagrant.configure('2') do |config|
   config.vm.network :forwarded_port, guest: 9090, host: 9090  #custom-ui
   config.vm.network :forwarded_port, guest: 3000, host: 3000  #marbles-ui
   config.vm.network :forwarded_port, guest: 3001, host: 3001  #marbles-ui
+
+  # For Airline
+  for i in 10000..10099
+    config.vm.network :forwarded_port, guest: i, host: i
+  end
+
 end
