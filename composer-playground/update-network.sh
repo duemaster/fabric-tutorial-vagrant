@@ -1,0 +1,1 @@
+docker exec cli composer network update --archiveFile /mnt/air-chain.bna -c admin1@air-chain;
